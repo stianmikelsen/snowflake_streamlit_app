@@ -14,6 +14,6 @@ s.text('🐔 Hard-Boiled Free-Range Egg')
 s.text('🥑🍞 Avocado toast')
 
 s.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
-s.multiselect("Pick some fruits:", list(my_fruit_list.index))
+s.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado','Apple'])
 
 s.dataframe(my_fruit_list)
