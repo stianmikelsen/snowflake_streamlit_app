@@ -2,6 +2,7 @@ import streamlit as s
 import pandas
 
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+my_fruit_list = my_fruit_list.set_index('Fruit')
 
 
 s.title("Snowflake App")
@@ -13,4 +14,6 @@ s.text('🐔 Hard-Boiled Free-Range Egg')
 s.text('🥑🍞 Avocado toast')
 
 s.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+s.multiselect("Pick some fruits:", list(my_fruit_list.index))
+
 s.dataframe(my_fruit_list)
