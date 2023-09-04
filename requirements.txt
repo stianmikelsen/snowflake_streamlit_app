@@ -1,3 +1,2 @@
-streamlit
-pandas
-requests
+#requirements.txt  
+snowflake-connector-python
