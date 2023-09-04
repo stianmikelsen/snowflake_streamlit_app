@@ -39,3 +39,6 @@ my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
 my_data_rows = my_cur.fetchall()
 s.text("The fruit load list:")
 s.dataframe(my_data_rows)
+
+s.header('Add fruit')
+fruit_add = s.text_input('What fruit would you like to add?','Jackfruit')
