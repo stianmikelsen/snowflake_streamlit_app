@@ -41,7 +41,6 @@ try:
 except URLError as e:
     s.error()
     
-s.stop()
 s.text("The fruit load list:")
 def get_fruit_list(cnx):
     with cnx.cursor() as my_cur:
