@@ -1,7 +1,8 @@
 import streamlit as s
-import pandas
-import requests
+#import pandas
+#import requests
 import snowflake.connector
+from urllib.error import URLError
 
 
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
@@ -32,7 +33,7 @@ fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit_cho
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 s.dataframe(fruityvice_normalized)
 
-
+s.stop()
 my_cnx = snowflake.connector.connect(**s.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
@@ -42,3 +43,4 @@ s.dataframe(my_data_rows)
 
 s.header('Add fruit')
 fruit_add = s.text_input('What fruit would you like to add?','Jackfruit')
+my_cur.execute(f"insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values {fruit_add}")
